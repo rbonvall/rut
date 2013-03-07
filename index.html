@@ -37,5 +37,14 @@
       return resultados;
     }
 
+    $("#validar").on("click", function() {
+      ruts = extraer_ruts();
+      $.each(ruts, function (index, rut) {
+        $("#reporte").html(function (i, old_html) {
+          return old_html + '<br>' + rut;
+        });
+      });
+    });
+
 </script>
 
