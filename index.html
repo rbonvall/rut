@@ -72,7 +72,6 @@
         for (var i = 0; i < n; ++i) {
           var r = resultados[i];
           var ultimo = r[r.length - 1];
-          console.log(ultimo);
           resultados[i] = resultados[i].replace(/.$/, '-' + ultimo);
         }
       }
@@ -97,7 +96,6 @@
         factor = factor > 7 ? 2 : factor;
         cifra = parseInt(cifras[i]);
         suma += cifra * factor;
-        //console.log(cifra.toString() + ' * ' + factor.toString())
       }
       var dv_calculado = (11 - (suma % 11)) % 11;
       if (dv_calculado === 10) {
