@@ -43,10 +43,14 @@
 
     $("#validar").on("click", function() {
       var ruts = extraer_ruts();
+      var reporte = $("#reporte");
       $.each(ruts, function (index, rut) {
-        $("#reporte").html(function (i, old_html) {
-          return old_html + '<br>' + normalizar_rut(rut);
+        reporte.html(function (i, old_html) {
+          return normalizar_rut(rut) + '<br>' + old_html;
         });
+      });
+      reporte.html(function (i, old_html) {
+        return '<hr>' + old_html;
       });
     });
 
