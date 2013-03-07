@@ -83,9 +83,16 @@
         return old_html + '<hr>';
       });
       $.each(ruts, function (index, rut) {
-        reporte.html(function (i, old_html) {
-          return old_html + normalizar_rut(rut) + '<br>';
-        });
+        var resultado = validar_rut(rut);
+        if (resultado.valido) {
+          reporte.html(function (i, old_html) {
+            return old_html + normalizar_rut(rut) + ' es v&aacute;lido<br>';
+          });
+        } else {
+          reporte.html(function (i, old_html) {
+            return old_html + normalizar_rut(rut) + ' inv&aacute;lido, deber&iacute;a ser raya ' + resultado.calculado + '<br>';
+          });
+        }
       });
     });
 
