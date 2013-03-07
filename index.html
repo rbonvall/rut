@@ -1,0 +1,29 @@
+<!doctype html>
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>Validador de ruts.</title>
+
+<p>
+  Copie y pegue un texto que contenga ruts.
+  Yo le dir&eacute; si est&aacute;n correctos.
+</p>
+
+<textarea id="entrada" placeholder="Pegue aqu&iacute;">
+</textarea>
+<br>
+
+<input id="validar" value="Validar" type="button">
+<input id="borrar"  value="Borrar"  type="button">
+
+<p id="reporte">
+</p>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+</script>
+
+<script>
+    $("#borrar").on("click", function() {
+        $("#entrada").val('');
+    });
+</script>
+
