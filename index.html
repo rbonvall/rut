@@ -37,11 +37,15 @@
       return resultados;
     }
 
+    function normalizar_rut(rut) {
+      return rut.replace(/[.]/g, '').replace('K', 'k')
+    }
+
     $("#validar").on("click", function() {
       ruts = extraer_ruts();
       $.each(ruts, function (index, rut) {
         $("#reporte").html(function (i, old_html) {
-          return old_html + '<br>' + rut;
+          return old_html + '<br>' + normalizar_rut(rut);
         });
       });
     });
