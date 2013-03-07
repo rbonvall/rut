@@ -8,6 +8,15 @@
     color: hsl(200, 90%, 10%);
     font-size: 20px;
   }
+
+  .valido {
+    background-color: hsl(100, 40%, 70%);
+    color: hsl(100, 90%, 10%);
+  }
+  .invalido {
+    background-color: hsl(0, 40%, 70%);
+    color: hsl(0, 90%, 10%);
+  }
 </style>
 
 <p>
@@ -115,13 +124,17 @@
         if (resultado.valido) {
           reporte.html(function (i, old_html) {
             return (old_html
+              + '<span class="valido">'
               + normalizar_rut(rut)
+              + '</span>'
               + ' es v&aacute;lido<br>');
           });
         } else {
           reporte.html(function (i, old_html) {
             return (old_html
+              + '<span class="invalido">'
               + normalizar_rut(rut)
+              + '</span>'
               + ' inv&aacute;lido, deber&iacute;a ser raya '
               + resultado.calculado +
               '<br>');
