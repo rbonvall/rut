@@ -41,6 +41,35 @@
       return rut.replace(/[.]/g, '').replace('K', 'k')
     }
 
+    function validar_rut(rut) {
+      var r = normalizar_rut(rut);
+      var partes = r.split('-');
+      var cifras = partes[0].split('');
+      var dv_original = partes[1];
+
+      var factor = 2;
+      var suma = 0;
+      var cifra;
+      for (var i = cifras.length - 1; i >= 0; i--, factor++) {
+        factor = factor > 7 ? 2 : factor;
+        cifra = parseInt(cifras[i]);
+        suma += cifra * factor;
+        //console.log(cifra.toString() + ' * ' + factor.toString())
+      }
+      var dv_calculado = (11 - (suma % 11)) % 11;
+      if (dv_calculado === 10) {
+        dv_calculado = 'k';
+      } else {
+        dv_calculado = dv_calculado.toString();
+      }
+
+      return {
+        original: dv_original,
+        calculado: dv_calculado,
+        valido: dv_original === dv_calculado,
+      }
+    }
+
     $("#validar").on("click", function() {
       var ruts = extraer_ruts();
       var reporte = $("#reporte");
